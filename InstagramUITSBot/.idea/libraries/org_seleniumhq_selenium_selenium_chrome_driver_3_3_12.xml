@@ -1,0 +1,60 @@
+<component name="libraryTable">
+  <library name="org.seleniumhq.selenium:selenium-chrome-driver:3.3.12" type="repository">
+    <properties maven-id="org.seleniumhq.selenium:selenium-chrome-driver:LATEST" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/selenium-chrome-driver-4.0.0-beta-4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/auto-service-annotations-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/auto-service-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/auto-common-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/guava-30.1.1-jre.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/failureaccess-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/jsr305-3.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/checker-qual-3.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/error_prone_annotations-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/j2objc-annotations-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/selenium-api-4.0.0-beta-4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/selenium-chromium-driver-4.0.0-beta-4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/selenium-devtools-4.0.0-beta-4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/selenium-http-4.0.0-beta-4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/selenium-json-4.0.0-beta-4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/selenium-remote-driver-4.0.0-beta-4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/jcommander-1.81.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-buffer-4.1.63.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-codec-http-4.1.63.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-codec-4.1.63.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-handler-4.1.63.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-common-4.1.63.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-transport-native-epoll-4.1.63.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-transport-native-kqueue-4.1.63.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-transport-native-unix-common-4.1.63.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-transport-4.1.63.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-resolver-4.1.63.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/opentelemetry-api-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/opentelemetry-context-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/opentelemetry-exporter-logging-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/opentelemetry-sdk-metrics-1.2.0-alpha.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/opentelemetry-sdk-common-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/opentelemetry-sdk-extension-autoconfigure-1.2.0-alpha.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/opentelemetry-sdk-trace-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/opentelemetry-api-metrics-1.2.0-alpha.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/opentelemetry-sdk-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/opentelemetry-semconv-1.2.0-alpha.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/jtoml-2.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/byte-buddy-1.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/commons-exec-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/async-http-client-2.12.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/async-http-client-netty-utils-2.12.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-codec-socks-4.1.60.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-handler-proxy-4.1.60.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-transport-native-epoll-4.1.60.Final-linux-x86_64.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-transport-native-kqueue-4.1.60.Final-osx-x86_64.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/reactive-streams-1.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/netty-reactive-streams-2.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/slf4j-api-1.7.30.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../IdeaProjects/lib/jakarta.activation-1.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
