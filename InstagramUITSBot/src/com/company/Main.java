@@ -12,10 +12,11 @@ public class Main {
                 "Enter your instagram credentials, the hashtag you want to search, and the number of pictures you want liked. \n" +
                 "We will take care of the rest!\n\n");
 
+        //New scanner for user input
         Scanner in = new Scanner(System.in);
 
         //get credentials
-        System.out.println("Please enter your instagram username, email address, or password.");
+        System.out.println("Please enter your Instagram account username, email address, or phone number.");
         String username = in.nextLine();
 
         System.out.println("Please enter your instagram password.");
@@ -35,11 +36,16 @@ public class Main {
         //Run Bot
         bot.LogIn();
 
-        //sleep for 30 seconds while I put in 2FA code
+        //sleep for 15 seconds while I put in 2FA code
         Thread.sleep(15000);
 
+        //Search the hashtag
         bot.Search();
+
+        //Like the entered amount of pictures
         bot.LikePictures();
+
+        //Thank you message
         System.out.println("Thank you so much for running our simple instagram bot!");
     }
 }
