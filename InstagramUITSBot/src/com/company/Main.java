@@ -1,10 +1,11 @@
 package com.company;
 
 import java.util.Scanner;
+import java.io.*;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException
+    public static void main(String[] args) throws InterruptedException, IOException
     {
         //intro
         System.out.println("WELCOME TO THE UITS INSTAGRAM LIKER BOT!" +
@@ -12,40 +13,58 @@ public class Main {
                 "Enter your instagram credentials, the hashtag you want to search, and the number of pictures you want liked. \n" +
                 "We will take care of the rest!\n\n");
 
+        /*
+        File file = new File("C:\\Users\\nsika\\OneDrive\\Attachments\\Desktop\\igbot.txt");
         //New scanner for user input
-        Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(file);
 
-        //get credentials
-        System.out.println("Please enter your Instagram account username, email address, or phone number.");
-        String username = in.nextLine();
-
-        System.out.println("Please enter your instagram password.");
-        String password = in.nextLine();
-
-        //get hashtag to be searched
-        System.out.println("Please enter the hashtag you would like to search.");
-        String HashTag = in.nextLine();
-
-        //get number of pictures bot should like
-        System.out.println("Please enter the number of pictures you want the bot to like.");
+        String username = in.nextLine().trim();
+        String password = in.nextLine().trim();
+        String HashTag = in.nextLine().trim();
         int totalLikes = in.nextInt();
+        */
 
-        //initialize bot with user info
-        BotRunner bot = new BotRunner(username, password, HashTag, totalLikes);
+        try {
+            Scanner in = new Scanner(System.in);
 
-        //Run Bot
-        bot.LogIn();
+            //get credentials
+            System.out.println("Please enter your Instagram account username, email address, or phone number.");
+            String username = in.nextLine().trim();
 
-        //sleep for 15 seconds while I put in 2FA code
-        Thread.sleep(15000);
+            System.out.println("Please enter your instagram password.");
+            String password = in.nextLine().trim();
 
-        //Search the hashtag
-        bot.Search();
+            //get hashtag to be searched
+            System.out.println("Please enter the hashtag you would like to search.");
+            String HashTag = in.nextLine().trim();
 
-        //Like the entered amount of pictures
-        bot.LikePictures();
+            //get number of pictures bot should like
+            System.out.println("Please enter the number of pictures you want the bot to like.");
+            int totalLikes = in.nextInt();
 
-        //Thank you message
-        System.out.println("Thank you so much for running our simple instagram bot!");
+            //in.close();
+
+            //initialize bot with user info
+            BotRunner bot = new BotRunner(username, password, HashTag, totalLikes);
+
+            //Run Bot
+            bot.LogIn();
+
+            //sleep for 15 seconds while I put in 2FA code
+            Thread.sleep(15000);
+
+            //Search the hashtag
+            bot.Search();
+
+            //Like the entered amount of pictures
+            bot.LikePictures();
+
+            //Thank you message
+            System.out.println("Thank you so much for running our simple instagram bot!");
+        }
+        catch(Exception e)
+        {
+            System.out.println("There was an error: " + e.toString());
+        }
     }
 }

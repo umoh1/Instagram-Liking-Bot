@@ -19,7 +19,7 @@ public class BotRunner
     private WebElement element1;            //the WebElement for interacting with elements
     private int totalLikes;                 //stores the total amount of pictures to like
     private String HashTag;                 //stores the user inputted hashtag
-
+    private int liked;
 
     /**
         Constructor: Initializes instagramAccount & driver field, and opens instagram in chrome
@@ -39,8 +39,11 @@ public class BotRunner
         //the amount of likes
         this.totalLikes = totalLikes;
 
+        //set liked count to 0
+        this.liked = 0;
+
         //path to find chromedriver
-        String path = "C:\\Users\\nsika\\Downloads\\chromedriver_win32\\chromedriver.exe";
+        String path = "C:\\Users\\nsika\\Downloads\\chromedriver_win321\\chromedriver.exe";
 
         //Set property to find chrome driver using path where it is stored
         System.setProperty("webdriver.chrome.driver",path);
@@ -119,81 +122,97 @@ public class BotRunner
                 .until(driver ->driver.findElement(By.xpath("/html/body/div[1]/section/nav/div[2]/div/div/div[2]/div[3]/div/div[2]/div/div[1]/a/div")));
         element1.click();
 
-        //sleep for 5 secs for syncing
-        Thread.sleep(5000);
+        //sleep for 3 secs for syncing
+        Thread.sleep(3000);
     }
 
-    /*
+    /**
         Method that locates the first picture in most recent feed of the hashtag, and then likes a certain amount of pictures after that
      */
     public void LikePictures() throws InterruptedException
     {
-        //tracks how many pictures have been liked
-        int liked = 0;
+        long start = 0, finish = 0;
 
-        //the full xpath of the first pic in the most recent photo section, allowing us to like freshly posted pictures
-        String firstPicXPath = "/html/body/div[1]/section/main/article/div[2]/div/div[1]/div[1]/a/div";
+        try {
+            //tracks how many pictures have been liked
 
-        //find the first picture to open the zoomed view where you can like a picture
-        element1 = new WebDriverWait(driver1, Duration.ofSeconds(3))
-                .until(driver -> driver.findElement(By.xpath(firstPicXPath)));
+            //the full xpath of the first pic in the most recent photo section, allowing us to like freshly posted pictures
+            String firstPicXPath = "/html/body/div[1]/section/main/article/div[2]/div/div[1]/div[1]/a/div";
 
-        //sleep for 2 seconds to give the bot time to sync with the browser
-        Thread.sleep(2000);
-
-        //click on the first picture in the most recent photo section
-        element1.click();
-
-        //use the actions class to enable double clicking to like pictures
-        Actions action = new Actions(driver1);
-
-        //track the start time of the liking process
-        long start = System.currentTimeMillis();
-
-        //keep liking pictures until the users like requirement is met
-        while(liked<totalLikes)
-        {
-            //sleep for 3 seconds to sync everything
-            Thread.sleep(3000);
-
-            ///x path of the picture
-            String frameXpath = "/html/body/div[5]/div[2]/div/article/div[2]/div/div/div[3]";
-
-            //the class name of the ig picture frame
-            String frameclass = "ZyFrc";
-
-            //find the main picture frame
+            //find the first picture to open the zoomed view where you can like a picture
             element1 = new WebDriverWait(driver1, Duration.ofSeconds(3))
-                     .until(driver -> driver1.findElement(By.className(frameclass)));
+                    .until(driver -> driver.findElement(By.xpath(firstPicXPath)));
 
-            //wait for a sec & double click the picture
-            Thread.sleep(1000);
-            action.doubleClick(element1).perform();
+            //sleep for 2 seconds to give the bot time to sync with the browser
+            Thread.sleep(2000);
 
-            //sleep for a second
-            Thread.sleep(1000);
-
-            //stores the right arrow css selector
-            String arrowCss = "body > div._2dDPU.CkGkG > div.EfHg9 > div > div > a._65Bje.coreSpriteRightPaginationArrow";
-
-            //finds the right arrow to move forward & click
-            element1 = new WebDriverWait(driver1, Duration.ofSeconds(3))
-                    .until(driver -> driver1.findElement(By.cssSelector(arrowCss)));
+            //click on the first picture in the most recent photo section
             element1.click();
 
-            //increase like count
-            liked++;
+            //use the actions class to enable double clicking to like pictures
+            Actions action = new Actions(driver1);
+
+            //track the start time of the liking process
+            start = System.currentTimeMillis();
+
+            //keep liking pictures until the users like requirement is met
+            while (liked < totalLikes) {
+                //sleep for 2 seconds to sync everything
+                Thread.sleep(2000);
+
+                ///x path of the picture
+                String frameXpath = "/html/body/div[5]/div[2]/div/article/div[2]/div/div/div[3]";
+
+                //the class name of the ig picture frame
+                String frameclass = "ZyFrc";
+
+                //find the main picture frame
+                element1 = new WebDriverWait(driver1, Duration.ofSeconds(3))
+                        .until(driver -> driver1.findElement(By.className(frameclass)));
+
+                //wait for a sec & double click the picture
+                Thread.sleep(1000);
+                action.doubleClick(element1).perform();
+
+                //sleep for a second
+                Thread.sleep(1000);
+
+                //stores the right arrow css selector
+                String arrowCss = "body > div._2dDPU.CkGkG > div.EfHg9 > div > div > a._65Bje.coreSpriteRightPaginationArrow";
+
+                //finds the right arrow to move forward & click
+                element1 = new WebDriverWait(driver1, Duration.ofSeconds(3))
+                        .until(driver -> driver1.findElement(By.cssSelector(arrowCss)));
+                element1.click();
+
+                //increase like count
+                liked++;
+            }
+
+            //Log the time that the loop finishes
+            finish = System.currentTimeMillis();
+
+            //close the driver so chrome doesn't take up all my damn RAM
+            driver1.quit();
+
+            //print out stats
+            System.out.println("Our bot liked " + liked + " pictures for you!");
+            System.out.println("Our bot took " + timer(start, finish) + " seconds to run.");
+
+        }
+        catch(Exception e)
+        {
+            driver1.navigate().refresh();
+            Search();
+            LikePictures();
+            finish = System.currentTimeMillis();
+            System.out.println("There was an error.\n");
+            e.printStackTrace();
+            System.out.println("Before the error, our bot liked " + liked + " pictures for you!");
+            System.out.println("Our bot has been running for " + timer(start, finish) + " seconds so far. I apologize for the error.");
+            driver1.quit();
         }
 
-        //Log the time that the loop finishes
-        long finish = System.currentTimeMillis();
-
-        //close the driver so chrome doesn't take up all my damn RAM
-        driver1.quit();
-
-        //print out stats
-        System.out.println("Our bot liked " + liked + " pictures for you!");
-        System.out.println("Our bot took " + timer(start, finish) + " seconds to run.");
     }
 
     /**
