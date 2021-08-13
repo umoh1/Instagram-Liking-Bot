@@ -13,17 +13,6 @@ public class Main {
                 "Enter your instagram credentials, the hashtag you want to search, and the number of pictures you want liked. \n" +
                 "We will take care of the rest!\n\n");
 
-        /*
-        File file = new File("C:\\Users\\nsika\\OneDrive\\Attachments\\Desktop\\igbot.txt");
-        //New scanner for user input
-        Scanner in = new Scanner(file);
-
-        String username = in.nextLine().trim();
-        String password = in.nextLine().trim();
-        String HashTag = in.nextLine().trim();
-        int totalLikes = in.nextInt();
-        */
-
         try {
             Scanner in = new Scanner(System.in);
 
