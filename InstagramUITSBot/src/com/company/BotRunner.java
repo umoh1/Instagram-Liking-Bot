@@ -43,7 +43,7 @@ public class BotRunner
         this.liked = 0;
 
         //path to find chromedriver
-        String path = "C:\\Users\\nsika\\Downloads\\chromedriver_win321\\chromedriver.exe";
+        String path = "Instagram-Liking-Bot\\InstagramUITSBot\\src\\com\\company\\ChromeDrivers\\chromedriver_win32chromedriver.exe";
 
         //Set property to find chrome driver using path where it is stored
         System.setProperty("webdriver.chrome.driver",path);
