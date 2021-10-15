@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class BotRunner
 {
+    //Fields
     private Account instagramAccount;       //will store the user's IG credentials
     private WebDriver driver1;              //the WebDriver for location elements
     private WebElement element1;            //the WebElement for interacting with elements
@@ -43,10 +44,11 @@ public class BotRunner
         this.liked = 0;
 
         //path to find chromedriver
-        String path = "Instagram-Liking-Bot\\InstagramUITSBot\\src\\com\\company\\ChromeDrivers\\chromedriver_win32chromedriver.exe";
+        String absolutePath = "C:\\Users\\nsika\\Instagram-Liking-Bot\\Instagram-Liking-Bot\\InstagramUITSBot\\ChromeDrivers\\chromedriver_win32\\chromedriver.exe";
+        String path = "Instagram-Liking-Bot\\InstagramUITSBot\\ChromeDrivers\\chromedriver_win32\\chromedriver.exe";
 
         //Set property to find chrome driver using path where it is stored
-        System.setProperty("webdriver.chrome.driver",path);
+        System.setProperty("webdriver.chrome.driver",absolutePath);
 
         //Open up new chrome browser
         driver1 = new ChromeDriver();
@@ -56,7 +58,7 @@ public class BotRunner
     }
 
     /**
-        LogIn Method will type in the user inputted: username, password,
+        Log In Method will type in the user inputted: username, password,
         & click on the log in button
      */
     public void LogIn() throws InterruptedException
@@ -127,15 +129,15 @@ public class BotRunner
     }
 
     /**
-        Method that locates the first picture in most recent feed of the hashtag, and then likes a certain amount of pictures after that
+        Method that locates the first picture in most recent feed of the hashtag, 
+        and then likes a certain amount of pictures after that
      */
     public void LikePictures() throws InterruptedException
     {
         long start = 0, finish = 0;
 
-        try {
-            //tracks how many pictures have been liked
-
+        try 
+        {
             //the full xpath of the first pic in the most recent photo section, allowing us to like freshly posted pictures
             String firstPicXPath = "/html/body/div[1]/section/main/article/div[2]/div/div[1]/div[1]/a/div";
 
@@ -188,28 +190,29 @@ public class BotRunner
                 //increase like count
                 liked++;
             }
+        }
+        //Occasionally, the driver accidentally taps on a tagged person, account or hashtag. This will get it back to normal.
+        catch(Exception e)
+        {
+            //refresh the page
+            driver1.navigate().refresh();
 
-            //Log the time that the loop finishes
+            //search the hashtag again
+            Search();
+
+            //keep liking pictures
+            LikePictures();
+            
+            System.out.println("\nThere was an error.\n");
+            e.printStackTrace();
+        }
+        finally
+        {
             finish = System.currentTimeMillis();
-
-            //close the driver so chrome doesn't take up all my damn RAM
-            driver1.quit();
-
             //print out stats
             System.out.println("Our bot liked " + liked + " pictures for you!");
             System.out.println("Our bot took " + timer(start, finish) + " seconds to run.");
 
-        }
-        catch(Exception e)
-        {
-            driver1.navigate().refresh();
-            Search();
-            LikePictures();
-            finish = System.currentTimeMillis();
-            System.out.println("There was an error.\n");
-            e.printStackTrace();
-            System.out.println("Before the error, our bot liked " + liked + " pictures for you!");
-            System.out.println("Our bot has been running for " + timer(start, finish) + " seconds so far. I apologize for the error.");
             driver1.quit();
         }
 
