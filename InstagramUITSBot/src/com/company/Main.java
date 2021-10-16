@@ -3,6 +3,13 @@ package com.company;
 import java.util.Scanner;
 import java.io.*;
 
+/**
+ * The main class that will collect user input, initialize the bot, and run it.
+ * @param args
+ * @throws InterruptedException
+ * @throws IOException
+ * @author N.J Umoh
+ */
 public class Main {
 
     private static String username;
@@ -20,8 +27,8 @@ public class Main {
                 "Enter your instagram credentials, the hashtag you want to search, and the number of pictures you want liked. \n" +
                 "We will take care of the rest!\n\n");
 
-    //    try 
-     //   {
+        try 
+        {
             //get user input
             getInput();
 
@@ -30,11 +37,11 @@ public class Main {
 
             //Thank you message
             System.out.println("Thank you so much for running our simple instagram bot!");
-       // }
-    /*    catch(Exception e)
+        }
+        catch(Exception e)
         {
             System.out.println("There was an error with our Instagram bot: " + e.toString());
-        } */
+        } 
     }
 
     /**
@@ -44,17 +51,19 @@ public class Main {
     {
         Scanner in = new Scanner(System.in);
         
+        //security for password input
+        Console console = System.console();
+
         do
         {
             //get credentials
             System.out.println("\nPlease enter your Instagram account username, email address, or phone number.");
             username = in.nextLine().trim();
-
-            System.out.println("Please enter your instagram password.");
-            password = in.nextLine().trim();
+         
+            password = new String(console.readPassword("Please enter your instagram password: "));
 
             //get hashtag to be searched
-            System.out.println("Please enter the hashtag you would like to search.");
+            System.out.println("\nPlease enter the hashtag you would like to search.");
             HashTag = in.nextLine().trim();
 
             //get number of pictures bot should like
@@ -121,6 +130,7 @@ public class Main {
             return false;
         }
 
+        //if 2FA is enabled
         if(twoFactor.charAt(0)=='Y')
         {
             System.out.println("You have indicated that 2FA is enabled on your instagram account. "+
@@ -128,7 +138,7 @@ public class Main {
             twoFA = true;
         }
 
-        //if validation tests are passed
+        // if validation tests are passed
         twoFA = false;
         return true;
     }

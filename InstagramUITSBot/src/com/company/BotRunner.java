@@ -44,7 +44,7 @@ public class BotRunner
         this.liked = 0;
 
         //path to find chromedriver
-        String absolutePath = "C:\\Users\\nsika\\Instagram-Liking-Bot\\Instagram-Liking-Bot\\InstagramUITSBot\\ChromeDrivers\\chromedriver_win32\\chromedriver.exe";
+        String absolutePath = "C:\\Users\\nsika\\OneDrive\\Attachments\\Desktop\\ChromeDrivers\\chromedriver_win32\\chromedriver.exe";
         String path = "Instagram-Liking-Bot\\InstagramUITSBot\\ChromeDrivers\\chromedriver_win32\\chromedriver.exe";
 
         //Set property to find chrome driver using path where it is stored
@@ -103,7 +103,7 @@ public class BotRunner
     {
         //find the search button
         element1 = new WebDriverWait(driver1, Duration.ofSeconds(3))
-                .until(driver -> driver.findElement(By.xpath("/html/body/div[1]/section/nav/div[2]/div/div/div[2]/div[1]/div/span[2]")));
+                .until(driver -> driver.findElement(By.xpath("/html/body/div[1]/section/nav/div[2]/div/div/div[2]/div[1]/div/span[1]")));
 
         //click the search button
         element1.click();
