@@ -12,6 +12,7 @@ import java.io.*;
  */
 public class Main {
 
+    //fields
     private static String username;
     private static String password;
     private static String HashTag;
@@ -25,18 +26,20 @@ public class Main {
         System.out.println("WELCOME TO THE UITS INSTAGRAM LIKER BOT!" +
          "\nInstructions \n_______________________\n " +
                 "Enter your instagram credentials, the hashtag you want to search, and the number of pictures you want liked. \n" +
-                "We will take care of the rest!\n\n");
+                "We will take care of the rest!\n\nUSER INPUT:\n______________________");
 
         try 
         {
             //get user input
             getInput();
 
+            System.out.println(twoFA);
+
             //run the bot
             runBot();
 
             //Thank you message
-            System.out.println("Thank you so much for running our simple instagram bot!");
+            System.out.println("\nThank you so much for running our simple instagram bot!");
         }
         catch(Exception e)
         {
@@ -130,6 +133,8 @@ public class Main {
             return false;
         }
 
+        twoFA = false;
+
         //if 2FA is enabled
         if(twoFactor.charAt(0)=='Y')
         {
@@ -139,7 +144,6 @@ public class Main {
         }
 
         // if validation tests are passed
-        twoFA = false;
         return true;
     }
 
@@ -154,10 +158,12 @@ public class Main {
         //Run Bot
         bot.LogIn();
 
-        //i 2FA is enabled, it will give the user 15 seconds to 
+        //i 2FA is enabled, it will give the user 30 seconds to 
         if(twoFA)
         { 
-            Thread.sleep(15000);
+            System.out.println("Waiting 30 seconds for 2FA.");
+            Thread.sleep(30000);
+            System.out.println("Done waiting.");
         }
         
         //Search the hashtag

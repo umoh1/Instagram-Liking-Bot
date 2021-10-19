@@ -102,16 +102,22 @@ public class BotRunner
     public void Search() throws InterruptedException
     {
         //find the search button
+//        element1 = new WebDriverWait(driver1, Duration.ofSeconds(3))
+//                .until(driver -> driver.findElement(By.xpath("/html/body/div[1]/section/nav/div[2]/div/div/div[2]/div[1]/div/span[1]")));
+
         element1 = new WebDriverWait(driver1, Duration.ofSeconds(3))
-                .until(driver -> driver.findElement(By.xpath("/html/body/div[1]/section/nav/div[2]/div/div/div[2]/div[1]/div/span[1]")));
+                .until(driver -> driver.findElement(By.cssSelector("#react-root > section > nav > div._8MQSO.Cx7Bp > div > div > div.LWmhU._0aCwM > div.pbgfb.Di7vw > div > span._6RZXI.coreSpriteSearchIcon")));
 
         //click the search button
         element1.click();
 
         //find the search box within the search bar, which is used for entering text
-        element1 = new WebDriverWait(driver1, Duration.ofSeconds(3))
-                .until(driver ->driver.findElement(By.xpath("/html/body/div[1]/section/nav/div[2]/div/div/div[2]/input")));
+//        element1 = new WebDriverWait(driver1, Duration.ofSeconds(3))
+//                .until(driver ->driver.findElement(By.xpath("/html/body/div[1]/section/nav/div[2]/div/div/div[2]/input")));
 
+        element1 = new WebDriverWait(driver1, Duration.ofSeconds(3))
+                .until(driver ->driver.findElement(By.cssSelector("#react-root > section > nav > div._8MQSO.Cx7Bp > div > div > div.LWmhU._0aCwM > input")));
+        
         //enter the hashtag in the search bar
         element1.sendKeys(HashTag);
 
@@ -203,7 +209,7 @@ public class BotRunner
             //keep liking pictures
             LikePictures();
             
-            System.out.println("\nThere was an error.\n");
+            System.out.println("\nThere was an error with the liking process.\n");
             e.printStackTrace();
         }
         finally
@@ -219,7 +225,7 @@ public class BotRunner
     }
 
     /**
-     *
+     * Times a code snippet
      * @param start: the start time of the process in millisecs
      * @param end: the end time of the process in millisecs
      * @return the total time taken in seconds (converted from millisecs)
@@ -231,4 +237,3 @@ public class BotRunner
     }
 
 }
-
